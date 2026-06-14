@@ -1,0 +1,3 @@
+{
+  "extends": "@headshot-studio/config/tsconfig.base.json"
+}

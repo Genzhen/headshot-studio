@@ -1,0 +1,37 @@
+{
+  "name": "headshot-studio",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "check-types": "turbo check-types",
+    "dev:web": "turbo -F web dev",
+    "dev:aws": "sst dev",
+    "deploy:aws": "sst deploy",
+    "remove:aws": "sst remove",
+    "db:push": "turbo -F @headshot-studio/db db:push",
+    "db:studio": "turbo -F @headshot-studio/db db:studio",
+    "db:generate": "turbo -F @headshot-studio/db db:generate",
+    "db:migrate": "turbo -F @headshot-studio/db db:migrate",
+    "build:lambda": "pnpm build && npx open-next build"
+  },
+  "packageManager": "pnpm@11.6.0",
+  "dependencies": {
+    "dotenv": "catalog:",
+    "zod": "catalog:",
+    "@headshot-studio/env": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "catalog:",
+    "@types/node": "^22.13.14",
+    "@headshot-studio/config": "workspace:*",
+    "sst": "^3.0.0",
+    "turbo": "^2.9.16",
+    "open-next": "^3.0.0"
+  }
+}

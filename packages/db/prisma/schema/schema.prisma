@@ -1,0 +1,48 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated"
+  moduleFormat = "esm"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// AIGEN Studio - Core Models
+
+model Generation {
+  id          String   @id @default(cuid())
+  userId      String
+  status      String   @default("PENDING") // PENDING, PROCESSING, COMPLETED, FAILED
+  style       String   @default("EXECUTIVE") // EXECUTIVE, CREATIVE, OUTDOOR
+  photoCount  Int      @default(40)
+  prompt      String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  completedAt DateTime?
+
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  photos      Photo[]
+
+  @@index([userId])
+  @@index([status])
+  @@map("generation")
+}
+
+model Photo {
+  id            String   @id @default(cuid())
+  generationId  String
+  url           String
+  thumbnailUrl  String?
+  style         String?
+  width         Int      @default(1024)
+  height        Int      @default(1024)
+  size          Int      @default(0)
+  isFavorite    Boolean  @default(false)
+  createdAt     DateTime @default(now())
+
+  generation    Generation @relation(fields: [generationId], references: [id], onDelete: Cascade)
+
+  @@index([generationId])
+  @@map("photo")
+}
