@@ -1,37 +1,30 @@
 "use client";
 
 import { Check } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export type StyleType = "EXECUTIVE" | "CREATIVE" | "OUTDOOR";
 
-interface Style {
-  id: StyleType;
-  name: string;
-  description: string;
-  gradient: string;
-}
-
-const styles: Style[] = [
+const styles = [
   {
-    id: "EXECUTIVE",
+    id: "EXECUTIVE" as const,
     name: "Executive Suite",
-    description: "Premium corporate aesthetic with sharp tailoring",
-    gradient: "from-primary-container to-primary",
+    image:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuCcYmGaIS7JM_MZ6SLh3-oLj0pbdfSvDAkDS4KKMzGTs9eUS_dG8_BnRd-xCePnBwrHcqSQXTuB5VZ0trJXBSTEcGhwqe_xV0a8sTgZ13klET68dxOdZrKzR5ay68OuH2SpSxoZ5XCmFF5BAfmn6GXIIlBRvUf2v_z0WCNPgUG5YuySy8dFKx3Bu1rXJkon0nZTEp7YQ1akNnMEj9LgTWBF5fWfzXZX6FbR8PJR7l9mVM8JIz70kW43CL0GRvPmx0j_CgUyR2JyEg",
   },
   {
-    id: "CREATIVE",
+    id: "CREATIVE" as const,
     name: "Creative Studio",
-    description: "Vibrant artistic lighting in minimalist loft",
-    gradient: "from-secondary-container to-secondary",
+    image:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuAGyyQeNbHcUalSD24BCBLl8WY4btsYARu5FNYae2q1l7-YYZ-fr0WTttaNBgu9-5RSAzI6J2sas61LZbJXKyZCbopJLadHvJRMBATa0I8i1kSCWOqnSRSv_xsMw3RgWqvbEfjyGcj0VjJSl-6FBoJ9bKU9FG2WPG4lvlw2QGr1UZpvc6X8ihqd6vdfbgjNPxrRmwjIZz66dJgXAgDxb_xeDphp_C8e3Stj-pVI6cURW12f9gZ5-V4j1wEBSoEaMkekQ0iJhyZnqA",
   },
   {
-    id: "OUTDOOR",
+    id: "OUTDOOR" as const,
     name: "Outdoor Casual",
-    description: "Natural golden-hour lighting in park setting",
-    gradient: "from-tertiary-container to-tertiary",
+    image:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuARd1zxMVoQ1Rja-tSjjLYA0Ay2S8nDGrZWmgBITpnf2mDTj_Foo06LJvAf_8nTjgNmpLFFfQCR1LKyEHu_fTmRvB6lu4_0S_N6c_oBiQ8bx5TRG7imWJJOrFsQa0i0J2ksBObZEzV5au9iTRXo4RDoV4G68P78Mk0comAiEgVhfRXg4UbKn1u99dz4i697zigbqsG_tAsOZUF5itq4_b_FSgdXpDcIIq2MMoropGQT2oCnUn-135K8G1yLmjtHUzbgBo1NKrlpOw",
   },
-];
+] as const;
 
 interface StyleSelectorProps {
   value?: StyleType;
@@ -41,6 +34,10 @@ interface StyleSelectorProps {
 export default function StyleSelector({ value = "EXECUTIVE", onChange }: StyleSelectorProps) {
   const [selectedStyle, setSelectedStyle] = useState<StyleType>(value);
 
+  useEffect(() => {
+    setSelectedStyle(value);
+  }, [value]);
+
   const handleSelect = (styleId: StyleType) => {
     setSelectedStyle(styleId);
     onChange?.(styleId);
@@ -49,7 +46,7 @@ export default function StyleSelector({ value = "EXECUTIVE", onChange }: StyleSe
   return (
     <div className="space-y-4">
       <div className="flex items-end justify-between">
-        <h3 className="text-headline-md font-heading text-primary">Pre-select Preferred Style</h3>
+        <h3 className="text-headline-md text-primary">Pre-select Preferred Style</h3>
         <a href="#" className="text-label-sm text-secondary hover:underline">
           View all styles
         </a>
@@ -60,10 +57,7 @@ export default function StyleSelector({ value = "EXECUTIVE", onChange }: StyleSe
           const isSelected = selectedStyle === style.id;
 
           return (
-            <label
-              key={style.id}
-              className={`group relative cursor-pointer ${isSelected ? "ring-4 ring-secondary-container/10" : ""}`}
-            >
+            <label key={style.id} className="group relative cursor-pointer">
               <input
                 type="radio"
                 name="style-select"
@@ -74,33 +68,30 @@ export default function StyleSelector({ value = "EXECUTIVE", onChange }: StyleSe
               />
 
               <div
-                className={`overflow-hidden rounded-xl border-2 transition-all ${
-                  isSelected ? "border-secondary-container" : "border-transparent"
+                className={`overflow-hidden rounded-xl border-2 bg-surface-container-low transition-all ${
+                  isSelected
+                    ? "border-secondary-container ring-4 ring-secondary-container/10"
+                    : "border-transparent"
                 }`}
               >
-                <div className={`aspect-[4/3] relative bg-gradient-to-br ${style.gradient}`}>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center text-white">
-                      <div className="text-4xl mb-2">
-                        {style.id === "EXECUTIVE" ? "💼" : style.id === "CREATIVE" ? "🎨" : "🌿"}
-                      </div>
-                    </div>
-                  </div>
+                <div className="relative aspect-[4/3]">
+                  <img
+                    src={style.image}
+                    alt={style.name}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   <div className="absolute bottom-3 left-3 text-white">
-                    <p className="text-label-sm font-semibold">{style.name}</p>
+                    <p className="text-label-sm">{style.name}</p>
                   </div>
                 </div>
               </div>
 
-              {/* Check Badge */}
-              <div
-                className={`absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-full bg-secondary-container text-on-secondary-container shadow-md transition-all ${
-                  isSelected ? "flex" : "hidden"
-                }`}
-              >
-                <Check className="h-4 w-4" strokeWidth={3} />
-              </div>
+              {isSelected ? (
+                <div className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-full bg-secondary-container text-primary shadow-md">
+                  <Check className="h-4 w-4" strokeWidth={3} />
+                </div>
+              ) : null}
             </label>
           );
         })}

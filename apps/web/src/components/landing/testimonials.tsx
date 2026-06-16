@@ -1,7 +1,6 @@
 "use client";
 
 import { ArrowLeft, ArrowRight, Star } from "lucide-react";
-import { useState } from "react";
 
 const testimonials = [
   {
@@ -9,42 +8,34 @@ const testimonials = [
     role: "Software Engineer @ FinTech",
     content:
       "I needed a new LinkedIn photo for my job search. This AI generated a headshot better than any photographer I've ever hired. Incredible ROI.",
-    avatar: "SJ",
+    avatar:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuBjPErxwV9W7uSh3ydaCICA0tqOoxPt0xfetqb-8Ruf0abLz5MToJnGvwTRnWyGB9W1R9mHq3tD4JWnFB2HnJ2Pj2AvhKQ7v3KfYexI67h3QsOIsM92GQmv341oU72zcj8xPCFUZil472BckwWlfmpjYigJm16nuRrfqucGq5B2FpU2Hid9egfbvQjrEaY9frO4J6Ud3cbQJFYl5gYAvACZfqQg7_bZU7TUYPvQlxeNUES69NRrmj6QS1deGwqK7TIC2V1tc9WWwg",
   },
   {
     name: "Marcus Thompson",
     role: "Luxury Realtor",
     content:
       "As a realtor, my face is my brand. AIGEN Studio gave me 40 different looks to use across all my marketing platforms for the price of a lunch.",
-    avatar: "MT",
+    avatar:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuCminUMIrCAf0y0uRHDAJuNvgr4ZYd0Q4FTDAOkU3SwJjpVe2IEY9fdIkM0RBDPttF0ZPbxvT93sirWR_PzLOkmvWaHWn13MAUr73PCfFroa2VL2pJt2WZrb_Dvt2YKrPm3hV3X5IYYul0_aW_qwqWjCgnGVrk9c5x0-AAmPAz-hrjsv67cwniCJgddJ7Y25-016QivqzIe1qlSJ3cjOmok3X-coRSDATkqx9hb4HCTZ5eegkyT7RsNnww1uumCakng-NdY8g2f6A",
   },
   {
     name: "David Long",
     role: "Executive VP @ LogiCorp",
     content:
       "The lighting and skin textures are indistinguishable from real photography. Saved my team thousands on our website rebrand.",
-    avatar: "DL",
+    avatar:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuAzCsInDdpn3pFd5zRgdXedNOa-KMw9uRSfQDMDIMzOr2_YPSRYFB0rRz-3cyEATL5iwDe9DwP8Lwr3rTCdcP4nEKlBiCxs_4mXgJNVZ6x0FeCc0cir3gzPlM5nLWwB3pmAICsMaSyHEioSc4f3J7zy6_5yWQROuPA0LEgAe6xWMNE5ZSqcy_LbhD63Q5nXzP1TMSNIPKSK58nHDABxSBKl1Tqu-JY4kXsDpGAMUsm_cLbTanRtwNUyct3dU7uyedATcbYAqKNOhg",
   },
-];
+] as const;
 
 export default function Testimonials() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const next = () => {
-    setCurrentIndex((i) => (i + 1) % testimonials.length);
-  };
-
-  const prev = () => {
-    setCurrentIndex((i) => (i - 1 + testimonials.length) % testimonials.length);
-  };
-
   return (
     <section className="bg-background px-[var(--spacing-margin-mobile)] py-[var(--spacing-stack-lg)] md:px-[var(--spacing-margin-desktop)]">
       <div className="container-max mx-auto">
-        {/* Header */}
-        <div className="mb-16 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+        <div className="mb-16 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div className="max-w-xl">
-            <h2 className="text-display-lg-mobile mb-4 font-display text-headline-md text-primary md:text-display-lg">
+            <h2 className="mb-4 text-display-lg-mobile text-primary md:text-headline-md">
               Loved by 100k+ Professionals
             </h2>
             <p className="text-body-md text-on-surface-variant">
@@ -52,83 +43,61 @@ export default function Testimonials() {
               and brand.
             </p>
           </div>
+
           <div className="flex gap-2">
-            <button
-              onClick={prev}
-              className="flex h-12 w-12 items-center justify-center rounded-full border border-outline transition-all hover:bg-primary hover:text-white"
-            >
+            <button className="flex h-12 w-12 items-center justify-center rounded-full border border-outline transition-all hover:bg-primary hover:text-white">
               <ArrowLeft className="h-5 w-5" />
             </button>
-            <button
-              onClick={next}
-              className="flex h-12 w-12 items-center justify-center rounded-full border border-outline transition-all hover:bg-primary hover:text-white"
-            >
+            <button className="flex h-12 w-12 items-center justify-center rounded-full border border-outline transition-all hover:bg-primary hover:text-white">
               <ArrowRight className="h-5 w-5" />
             </button>
           </div>
         </div>
 
-        {/* Testimonials Grid */}
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-          {testimonials.map((testimonial, index) => (
-            <div
-              key={index}
-              className={`flex flex-col justify-between rounded-3xl border border-outline-variant/50 bg-white p-8 shadow-sm ${
-                index === 1 ? "md:-translate-y-4" : ""
-              } ${index === 1 ? "bg-primary text-on-primary" : ""}`}
-            >
-              <div>
-                {/* Stars */}
-                <div className={`mb-6 flex ${index === 1 ? "text-[#00D4FF]" : "text-[#00D4FF]"}`}>
-                  {[1, 2, 3, 4, 5].map((i) => (
-                    <Star key={i} className="h-5 w-5 fill-current" />
-                  ))}
-                </div>
+          {testimonials.map((testimonial, index) => {
+            const featured = index === 1;
 
-                {/* Content */}
-                <p
-                  className={`text-body-md mb-8 italic ${
-                    index === 1 ? "text-on-primary/90" : "text-primary"
-                  }`}
-                >
-                  &ldquo;{testimonial.content}&rdquo;
-                </p>
-              </div>
-
-              {/* Author */}
-              <div className="flex items-center gap-4">
-                <div
-                  className={`flex h-12 w-12 items-center justify-center rounded-full ${
-                    index === 1 ? "bg-white/20" : "bg-secondary-container/20"
-                  }`}
-                >
-                  <span
-                    className={`text-label-sm font-bold ${
-                      index === 1 ? "text-white" : "text-primary"
-                    }`}
-                  >
-                    {testimonial.avatar}
-                  </span>
-                </div>
+            return (
+              <article
+                key={testimonial.name}
+                className={`flex flex-col justify-between rounded-3xl p-8 shadow-sm ${
+                  featured ? "bg-primary text-white md:-translate-y-4" : "border border-outline-variant/50 bg-white"
+                }`}
+              >
                 <div>
-                  <p
-                    className={`text-label-sm ${
-                      index === 1 ? "text-on-primary" : "text-primary"
-                    }`}
-                  >
-                    {testimonial.name}
-                  </p>
-                  <p
-                    className={`text-label-xs ${
-                      index === 1 ? "text-on-primary/70" : "text-on-surface-variant"
-                    }`}
-                  >
-                    {testimonial.role}
+                  <div className="mb-6 flex text-secondary-container">
+                    {Array.from({ length: 5 }).map((_, starIndex) => (
+                      <Star key={starIndex} className="h-5 w-5 fill-current" />
+                    ))}
+                  </div>
+                  <p className={`mb-8 text-body-md italic ${featured ? "text-white/90" : "text-primary"}`}>
+                    &ldquo;{testimonial.content}&rdquo;
                   </p>
                 </div>
-              </div>
-            </div>
-          ))}
+
+                <div className="flex items-center gap-4">
+                  <img
+                    src={testimonial.avatar}
+                    alt={testimonial.name}
+                    className="h-12 w-12 rounded-full object-cover"
+                  />
+                  <div>
+                    <p className={`text-label-sm ${featured ? "text-white" : "text-primary"}`}>
+                      {testimonial.name}
+                    </p>
+                    <p
+                      className={`text-label-xs ${
+                        featured ? "text-white/70" : "text-on-surface-variant"
+                      }`}
+                    >
+                      {testimonial.role}
+                    </p>
+                  </div>
+                </div>
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>

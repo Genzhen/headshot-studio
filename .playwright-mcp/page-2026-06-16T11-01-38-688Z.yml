@@ -1,0 +1,160 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - link "AIGEN Studio" [ref=e5] [cursor=pointer]:
+          - /url: /
+        - navigation [ref=e6]:
+          - link "Gallery" [ref=e7] [cursor=pointer]:
+            - /url: /gallery
+          - link "Process" [ref=e8] [cursor=pointer]:
+            - /url: /#process
+          - link "Pricing" [ref=e9] [cursor=pointer]:
+            - /url: /pricing
+        - generic [ref=e10]:
+          - link "Sign In" [ref=e11] [cursor=pointer]:
+            - /url: /login
+          - link "Get Started" [ref=e12] [cursor=pointer]:
+            - /url: /upload
+    - main [ref=e13]:
+      - generic [ref=e14]:
+        - generic [ref=e16]:
+          - generic [ref=e17]:
+            - generic [ref=e20]: Trusted by 100,000+ Professionals
+            - heading "Get the perfect professional headshot in 90 minutes." [level=1] [ref=e21]
+            - paragraph [ref=e22]: Save $1,000s on traditional photoshoots. Over 100,000+ professionals trust us for their LinkedIn, Resume, and Team photos.
+            - generic [ref=e23]:
+              - link "Get Your Photos" [ref=e24] [cursor=pointer]:
+                - /url: /upload
+                - text: Get Your Photos
+                - img [ref=e25]
+              - link "See Gallery" [ref=e27] [cursor=pointer]:
+                - /url: /gallery
+            - generic [ref=e28]:
+              - generic [ref=e29]:
+                - img "User 1" [ref=e30]
+                - img "User 2" [ref=e31]
+                - img "User 3" [ref=e32]
+              - generic [ref=e33]:
+                - generic [ref=e34]:
+                  - img [ref=e35]
+                  - img [ref=e37]
+                  - img [ref=e39]
+                  - img [ref=e41]
+                  - img [ref=e43]
+                - text: 4.9/5 from 2,000+ reviews
+          - generic [ref=e45]:
+            - img "Professional AI headshot preview" [ref=e46]
+            - generic [ref=e50]:
+              - generic [ref=e51]: AI Generation in progress...
+              - generic [ref=e52]: 87%
+        - generic [ref=e56]:
+          - paragraph [ref=e57]: As seen on
+          - generic [ref=e58]:
+            - generic [ref=e59]: Forbes
+            - generic [ref=e60]: TechCrunch
+            - generic [ref=e61]: WIRED
+            - generic [ref=e62]: VOGUE
+            - generic [ref=e63]: Inc.
+        - generic [ref=e65]:
+          - generic [ref=e66]:
+            - heading "Studio Quality, Zero Hassle" [level=2] [ref=e67]
+            - paragraph [ref=e68]: See how our AI transforms casual smartphone photos into world-class corporate headshots with pixel-perfect lighting and style.
+          - generic [ref=e70]:
+            - generic [ref=e71]:
+              - img "Before casual selfie" [ref=e72]
+              - generic [ref=e73]: "Before: Casual Selfie"
+            - generic [ref=e74]:
+              - img "After AI studio portrait" [ref=e75]
+              - generic [ref=e76]: "After: AI Studio"
+            - generic [ref=e78]: ↔
+        - generic [ref=e80]:
+          - heading "The 90-Minute Professional Transformation" [level=2] [ref=e82]
+          - generic [ref=e83]:
+            - generic [ref=e84]:
+              - img [ref=e86]
+              - heading "1. Upload 10+ selfies" [level=3] [ref=e89]
+              - paragraph [ref=e90]: Simply upload existing photos from your phone. No studio visit required.
+            - generic [ref=e91]:
+              - img [ref=e93]
+              - heading "2. AI works its magic" [level=3] [ref=e96]
+              - paragraph [ref=e97]: Our custom-trained engine generates high-fidelity portraits tailored to your features.
+            - generic [ref=e98]:
+              - img [ref=e100]
+              - heading "3. Download 40+ photos" [level=3] [ref=e103]
+              - paragraph [ref=e104]: Get a variety of outfits, backgrounds, and expressions in high-resolution.
+        - generic [ref=e106]:
+          - generic [ref=e107]:
+            - generic [ref=e108]:
+              - heading "Loved by 100k+ Professionals" [level=2] [ref=e109]
+              - paragraph [ref=e110]: Our users range from startup founders to Fortune 500 executives who value their time and brand.
+            - generic [ref=e111]:
+              - button [ref=e112]:
+                - img [ref=e113]
+              - button [ref=e115]:
+                - img [ref=e116]
+          - generic [ref=e118]:
+            - article [ref=e119]:
+              - generic [ref=e120]:
+                - generic [ref=e121]:
+                  - img [ref=e122]
+                  - img [ref=e124]
+                  - img [ref=e126]
+                  - img [ref=e128]
+                  - img [ref=e130]
+                - paragraph [ref=e132]: “I needed a new LinkedIn photo for my job search. This AI generated a headshot better than any photographer I've ever hired. Incredible ROI.”
+              - generic [ref=e133]:
+                - img "Sarah Jenkins" [ref=e134]
+                - generic [ref=e135]:
+                  - paragraph [ref=e136]: Sarah Jenkins
+                  - paragraph [ref=e137]: Software Engineer @ FinTech
+            - article [ref=e138]:
+              - generic [ref=e139]:
+                - generic [ref=e140]:
+                  - img [ref=e141]
+                  - img [ref=e143]
+                  - img [ref=e145]
+                  - img [ref=e147]
+                  - img [ref=e149]
+                - paragraph [ref=e151]: “As a realtor, my face is my brand. AIGEN Studio gave me 40 different looks to use across all my marketing platforms for the price of a lunch.”
+              - generic [ref=e152]:
+                - img "Marcus Thompson" [ref=e153]
+                - generic [ref=e154]:
+                  - paragraph [ref=e155]: Marcus Thompson
+                  - paragraph [ref=e156]: Luxury Realtor
+            - article [ref=e157]:
+              - generic [ref=e158]:
+                - generic [ref=e159]:
+                  - img [ref=e160]
+                  - img [ref=e162]
+                  - img [ref=e164]
+                  - img [ref=e166]
+                  - img [ref=e168]
+                - paragraph [ref=e170]: “The lighting and skin textures are indistinguishable from real photography. Saved my team thousands on our website rebrand.”
+              - generic [ref=e171]:
+                - img "David Long" [ref=e172]
+                - generic [ref=e173]:
+                  - paragraph [ref=e174]: David Long
+                  - paragraph [ref=e175]: Executive VP @ LogiCorp
+        - generic [ref=e178]:
+          - heading "Ready for your professional upgrade?" [level=2] [ref=e179]
+          - paragraph [ref=e180]: Get 40+ high-quality headshots in 90 minutes. Join the elite professionals upgrading their online presence.
+          - link "Generate My Headshots Now" [ref=e181] [cursor=pointer]:
+            - /url: /upload
+          - paragraph [ref=e182]: No credit card required to start • 100% Satisfaction Guarantee
+        - generic [ref=e184]:
+          - generic [ref=e185]:
+            - paragraph [ref=e186]: AIGEN Studio
+            - paragraph [ref=e187]: © 2024 AIGEN Studio. Professional AI Portraits.
+          - generic [ref=e188]:
+            - link "Privacy Policy" [ref=e189] [cursor=pointer]:
+              - /url: /privacy
+            - link "Terms of Service" [ref=e190] [cursor=pointer]:
+              - /url: /terms
+            - link "Support" [ref=e191] [cursor=pointer]:
+              - /url: /support
+            - link "Contact" [ref=e192] [cursor=pointer]:
+              - /url: /contact
+  - region "Notifications alt+T"
+  - button "Open Next.js Dev Tools" [ref=e198] [cursor=pointer]:
+    - img [ref=e199]

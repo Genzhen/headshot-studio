@@ -84,7 +84,7 @@ export default function UploadZone({
         isDragging
           ? "border-secondary-container bg-secondary-container/5"
           : isComplete
-          ? "border-tertiary-container bg-tertiary-container/5"
+          ? "border-secondary-container bg-secondary-container/5"
           : "border-outline-variant/50 bg-white hover:border-secondary-container"
       }`}
       onDragOver={handleDragOver}
@@ -105,7 +105,7 @@ export default function UploadZone({
         <div
           className={`mx-auto mb-6 inline-flex h-20 w-20 items-center justify-center rounded-full transition-transform duration-500 ${
             isComplete
-              ? "bg-tertiary-container/30 text-tertiary-container"
+              ? "bg-secondary-fixed/30 text-on-secondary-container"
               : "bg-secondary-fixed/30 text-on-secondary-container"
           } ${isDragging ? "scale-110 rotate-6" : ""}`}
         >
@@ -116,7 +116,7 @@ export default function UploadZone({
           )}
         </div>
 
-        <h2 className="text-display-lg-mobile text-headline-md mb-2 font-display text-primary">
+        <h2 className="text-headline-md mb-2 text-primary md:text-display-lg-mobile">
           {fileCount > 0 ? `${fileCount} photos selected` : "Drag and drop your photos"}
         </h2>
 
@@ -136,7 +136,7 @@ export default function UploadZone({
         />
 
         <button
-          className="inline-flex items-center gap-3 rounded-xl bg-primary px-8 py-4 text-label-sm text-on-primary shadow-lg transition-colors hover:bg-primary-container"
+          className="inline-flex items-center gap-3 rounded-xl bg-primary px-8 py-4 text-label-sm font-bold text-white shadow-lg transition-colors hover:bg-primary-container"
           onClick={(e) => {
             e.stopPropagation();
             handleClick();

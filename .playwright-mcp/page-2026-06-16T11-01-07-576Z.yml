@@ -1,0 +1,122 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - link "AIGEN Studio" [ref=e5] [cursor=pointer]:
+          - /url: /
+        - navigation [ref=e6]:
+          - link "Gallery" [ref=e7] [cursor=pointer]:
+            - /url: /gallery
+          - link "Process" [ref=e8] [cursor=pointer]:
+            - /url: /#process
+          - link "Pricing" [ref=e9] [cursor=pointer]:
+            - /url: /pricing
+        - generic [ref=e10]:
+          - link "Sign In" [ref=e11] [cursor=pointer]:
+            - /url: /login
+          - link "Get Started" [ref=e12] [cursor=pointer]:
+            - /url: /upload
+    - main [ref=e13]:
+      - generic [ref=e14]:
+        - generic [ref=e15]:
+          - generic [ref=e16]:
+            - generic [ref=e17]:
+              - img [ref=e18]
+              - generic [ref=e21]: High-Precision AI Generation
+            - heading "Professional Portraits Engineered for Success." [level=1] [ref=e22]:
+              - text: Professional Portraits
+              - text: Engineered for Success.
+            - paragraph [ref=e23]: Browse our curated collection of AI-generated headshots across industries. Experience studio-quality lighting and professional aesthetics without the studio price tag.
+          - generic [ref=e25]:
+            - generic [ref=e26]:
+              - button "All" [ref=e27]
+              - button "Corporate" [ref=e28]
+              - button "Creative" [ref=e29]
+              - button "Outdoor" [ref=e30]
+              - button "Medical" [ref=e31]
+            - generic [ref=e32]:
+              - generic [ref=e33]:
+                - img "Executive Profile" [ref=e34]
+                - generic [ref=e35]:
+                  - generic [ref=e36]: Corporate
+                  - paragraph [ref=e37]: Executive Profile
+              - generic [ref=e38]:
+                - img "Art Director" [ref=e39]
+                - generic [ref=e40]:
+                  - generic [ref=e41]: Creative
+                  - paragraph [ref=e42]: Art Director
+              - generic [ref=e43]:
+                - img "Entrepreneur" [ref=e44]
+                - generic [ref=e45]:
+                  - generic [ref=e46]: Outdoor
+                  - paragraph [ref=e47]: Entrepreneur
+              - generic [ref=e48]:
+                - img "Specialist Surgeon" [ref=e49]
+                - generic [ref=e50]:
+                  - generic [ref=e51]: Medical
+                  - paragraph [ref=e52]: Specialist Surgeon
+              - generic [ref=e53]:
+                - img "Senior Consultant" [ref=e54]
+                - generic [ref=e55]:
+                  - generic [ref=e56]: Corporate
+                  - paragraph [ref=e57]: Senior Consultant
+              - generic [ref=e58]:
+                - img "UX Architect" [ref=e59]
+                - generic [ref=e60]:
+                  - generic [ref=e61]: Creative
+                  - paragraph [ref=e62]: UX Architect
+              - generic [ref=e63]:
+                - img "Research Lead" [ref=e64]
+                - generic [ref=e65]:
+                  - generic [ref=e66]: Medical
+                  - paragraph [ref=e67]: Research Lead
+              - generic [ref=e68]:
+                - img "Founding Partner" [ref=e69]
+                - generic [ref=e70]:
+                  - generic [ref=e71]: Corporate
+                  - paragraph [ref=e72]: Founding Partner
+          - generic [ref=e74]:
+            - heading "Ready to upgrade your profile?" [level=2] [ref=e75]
+            - paragraph [ref=e76]: Join 10,000+ professionals who trust AIGEN Studio for their digital identity.
+            - generic [ref=e77]:
+              - link "Get Started" [ref=e78] [cursor=pointer]:
+                - /url: /upload
+              - link "View Pricing" [ref=e79] [cursor=pointer]:
+                - /url: /pricing
+        - generic [ref=e81]:
+          - generic [ref=e82]:
+            - paragraph [ref=e83]: AIGEN Studio
+            - paragraph [ref=e84]: © 2024 AIGEN Studio. Professional AI Portraits.
+          - generic [ref=e85]:
+            - generic [ref=e86]:
+              - generic [ref=e87]: Company
+              - link "Privacy Policy" [ref=e88] [cursor=pointer]:
+                - /url: /privacy
+              - link "Terms of Service" [ref=e89] [cursor=pointer]:
+                - /url: /terms
+            - generic [ref=e90]:
+              - generic [ref=e91]: Product
+              - link "Gallery" [ref=e92] [cursor=pointer]:
+                - /url: /gallery
+              - link "Pricing" [ref=e93] [cursor=pointer]:
+                - /url: /pricing
+            - generic [ref=e94]:
+              - generic [ref=e95]: Social
+              - link "LinkedIn" [ref=e96] [cursor=pointer]:
+                - /url: /login
+              - link "Twitter" [ref=e97] [cursor=pointer]:
+                - /url: /login
+            - generic [ref=e98]:
+              - generic [ref=e99]: Support
+              - link "Contact" [ref=e100] [cursor=pointer]:
+                - /url: /contact
+              - link "Help Center" [ref=e101] [cursor=pointer]:
+                - /url: /support
+  - generic [ref=e102]:
+    - img [ref=e104]
+    - button "Open Tanstack query devtools" [ref=e152] [cursor=pointer]:
+      - img [ref=e153]
+  - region "Notifications alt+T"
+  - button "Open Next.js Dev Tools" [ref=e206] [cursor=pointer]:
+    - img [ref=e207]
+  - alert [ref=e210]

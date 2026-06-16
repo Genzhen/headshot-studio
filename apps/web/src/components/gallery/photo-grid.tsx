@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 import FilterBar from "./filter-bar";
 import PhotoCard, { type PhotoCategory } from "./photo-card";
@@ -9,94 +9,78 @@ interface Photo {
   id: string;
   category: PhotoCategory;
   title: string;
-  gradient: string;
-  emoji: string;
+  image: string;
 }
 
-const samplePhotos: Photo[] = [
+const photos: Photo[] = [
   {
-    id: "1",
+    id: "corporate-1",
     category: "Corporate",
     title: "Executive Profile",
-    gradient: "from-primary-container to-primary",
-    emoji: "💼",
+    image:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuA6eMDw1lFQb37d7BJxxk0piU0iUsHACYwULCQjpmmdWx4-u6l_BALM31DYa6tiMNhMDlrDM2R241SUWXoV0b1QbieO6y87XbuQQZAFZknNc9i29KB6v6Uo59SLvzu63DNLWBmz-SHrdsF0TOUux-G11G_0AMTsMa3R6uBtulUH6bM37AsrZ2fFC7Y3mxnVz6pq4KxMNPSvxOJ0eglO2rgQeIqcHhxYdMudtj7vYPg0a-i-Tts0HIlOxao-9t0OS-NHyLu3m2MNkA",
   },
   {
-    id: "2",
+    id: "creative-1",
     category: "Creative",
     title: "Art Director",
-    gradient: "from-secondary-container to-secondary",
-    emoji: "🎨",
+    image:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuCTPiWr86DzU_e5X0mr8BEtvMeKWU83fGnPyjwBROfOtp1YN7TQIT6UyaeyyHr2E65BiB0NfJse4LDZ4B2EqQxULstUoWaREWD6VRJJzyO5VTLpNvwH8CUudNQNWT14oxlYLt-O45WaLi19i-cguo5gUmmZn2BXCchOibkVXgt0XEkmolbvP1jHpxbLtOnojoT8StEX-MuORd3OE3xxZ57S6_gIlXzXReYEwesrB2jcdwNpLDudgmb5tkUFVNn16lm8jvhzx4YK1w",
   },
   {
-    id: "3",
+    id: "outdoor-1",
     category: "Outdoor",
     title: "Entrepreneur",
-    gradient: "from-tertiary-container to-tertiary",
-    emoji: "",
+    image:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuCsJk8PZgcgOZ4M-NWx1uGBb89SVUnQCA5NRdmkfLP_ECUOYjMN-D1-MpK_vuMSQTNZnMCMf9tzXoINQllMzODeptimGgKMDt0o1X1GxZ0iJ99ZBDR-LODiYzpfQHpSnUodCn0BlfaxCuMk0moD-ROP2HxXgiXEzOPtHPwG9Aqm_hZENGunihg6MsPOUsvPtF5zWvmfrNYw_DfLBslwHF60bxjad7RztPslVLuVLD02YZuIV5cJv9ClhLDfq5IBmqP47Rt5hGmNqQ",
   },
   {
-    id: "4",
+    id: "medical-1",
     category: "Medical",
     title: "Specialist Surgeon",
-    gradient: "from-blue-600 to-blue-800",
-    emoji: "️",
+    image:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuAZ8bJLqvMlRIWkiZHbGUAyzrY4z4STP5Bo4QVcPpp-UPNQBGOCi_KKQ_0TmzSVNfhmoGBznPwZmVVVDpLh38AEQtwpIDw7Y64qg2GMUzx18ZgbsJsPVQ2Zkuwsl9B0-E18uTA3LaElxW6rOJsYzY8yYkuIXb_W89XPs1in24Qf8rfTdR6c_ULlF1lxxz4xPlKVgZvhzamvbBEC6YvSO5wihQSl84Qi5nb0bPTub0hu1SbeEyh294kkxFxfvXHpxHhSNODRmu1llA",
   },
   {
-    id: "5",
+    id: "corporate-2",
     category: "Corporate",
     title: "Senior Consultant",
-    gradient: "from-slate-700 to-slate-900",
-    emoji: "",
+    image:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuDVs9HY8yhiPFugyApdd-cCCvtOCSxDfEVC9UjiOhy7V-zPj4KsS--TLU9umw5MQ1b386Yg5aME87Jt09nnSRVL34dcyGn73foyDKUXvcgVrYsQkcqBCPgMZrvbHV3uEk8oZHKM3-p5K_WSBFmkDxa_48IReV8Lv1N4MpsF32dU59-qKScx9QPie9FylAWsfaeSRUR4IwYzsLIEgELgTYQUwNg68UPs59Bu3-P-VnfepyuFBlRL0oqXxxrnluAzn_1w6gUf11CLfw",
   },
   {
-    id: "6",
+    id: "creative-2",
     category: "Creative",
     title: "UX Architect",
-    gradient: "from-purple-600 to-purple-800",
-    emoji: "🖌️",
+    image:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuAaUSYkE4_N9oVE4vX33wTK993IcgZvU9zRNtz2jFTdwJNAEYkB0RUJh-yEViZrkR36YwBuavYXVnQkH5eOEuC3nUhIa4aXjInWfdW6qQH-_tcMjzJP5AEqWGP51G3CB82usOKR08xaqSBvu5-A565uhS3kfilMokcXsdemi6OfknUlemcYGevQPM7hKUeflGckmkXQpoI537zKngD89Jmb4auamupQvGylPrfVRmkj0A10RXie2a35qDU_ROKYrqxclp55jOg2EA",
   },
   {
-    id: "7",
+    id: "medical-2",
     category: "Medical",
     title: "Research Lead",
-    gradient: "from-cyan-600 to-cyan-800",
-    emoji: "🔬",
+    image:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuDVgL1jhgO-d_5jMxtqcNZPx7h29qkdbo2Q5YlJYki6m2F9rw1Ma6pKwwhDtoyD7Oqmqhf-Kzdon7kJvyj1LeGTVJF54kSLfn9llBew6j9GAmqZ0tSR4BA6JdJD-G--Szckj5UnaK1ZiBevy51qdMrs-RGDPWHtPhUHHbN2BAIh4chs92vDVSvpkSmhD2L1xAaJJAIGG9oKeaaDRKEjuyRSbQ7c6lFuvd03rjQjz1FfDaLELyTBtizYJUCTvWPShv7SkbJIB1_Ugg",
   },
   {
-    id: "8",
+    id: "corporate-3",
     category: "Corporate",
     title: "Founding Partner",
-    gradient: "from-gray-700 to-gray-900",
-    emoji: "🤝",
+    image:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuAVZyWW01Q1bvGzgzZfFSsIjl-AHaW9AxW135N1Q4MnyDOOT4ceR1rsSX4QOHBy_-GSF7IPvRdIMyZKEW-CLvdCkG6eEAsgOj9Wi5HSWPfxj0aRE-qqAWRx9gS2mzew9izoNWkPJVNNvgAuxxYZlcJBSKD-3RNyHgVqXCPT5JnkxkeMciUN64e2BpMbtfVb714GzHcL_McT3L9bc9y9O54IredtFIKU3lY5UUaKCWRuw59W5U4D1VMHOA2yRPe7rpoknMPBRPSg2Q",
   },
 ];
 
 export default function PhotoGrid() {
   const [activeCategory, setActiveCategory] = useState("All");
-  const [favorites, setFavorites] = useState<Set<string>>(new Set());
 
-  const filteredPhotos =
-    activeCategory === "All"
-      ? samplePhotos
-      : samplePhotos.filter((photo) => photo.category === activeCategory);
+  const filteredPhotos = useMemo(() => {
+    if (activeCategory === "All") {
+      return photos;
+    }
 
-  const handleFavoriteToggle = (id: string) => {
-    setFavorites((prev) => {
-      const next = new Set(prev);
-      if (next.has(id)) {
-        next.delete(id);
-      } else {
-        next.add(id);
-      }
-      return next;
-    });
-  };
-
-  const handleDownload = (id: string) => {
-    console.log("Download photo:", id);
-    // TODO: Implement download via tRPC
-  };
+    return photos.filter((photo) => photo.category === activeCategory);
+  }, [activeCategory]);
 
   return (
     <div>
@@ -110,23 +94,12 @@ export default function PhotoGrid() {
         {filteredPhotos.map((photo) => (
           <PhotoCard
             key={photo.id}
-            id={photo.id}
             category={photo.category}
             title={photo.title}
-            gradient={photo.gradient}
-            emoji={photo.emoji}
-            isFavorite={favorites.has(photo.id)}
-            onFavoriteToggle={handleFavoriteToggle}
-            onDownload={handleDownload}
+            image={photo.image}
           />
         ))}
       </div>
-
-      {filteredPhotos.length === 0 && (
-        <div className="py-20 text-center">
-          <p className="text-body-lg text-on-surface-variant">No photos found in this category.</p>
-        </div>
-      )}
     </div>
   );
 }

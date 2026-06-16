@@ -1,8 +1,10 @@
 "use client";
 
 import { Check } from "lucide-react";
+import Link from "next/link";
 
 import PricingCard, { type PricingPlan } from "@/components/pricing/pricing-card";
+import SiteFooter from "@/components/site-footer";
 
 const plans: PricingPlan[] = [
   {
@@ -85,17 +87,21 @@ export default function PricingPage() {
   return (
     <div className="min-h-screen bg-surface">
       <div className="container-max mx-auto px-[var(--spacing-margin-mobile)] py-[var(--spacing-stack-lg)] md:px-[var(--spacing-margin-desktop)]">
-        {/* Header */}
         <section className="mb-16 text-center">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-primary-fixed px-4 py-1.5">
+            <span className="text-label-sm text-on-primary-fixed-variant">
+              Built for professionals, teams, and studios
+            </span>
+          </div>
           <h1 className="text-display-lg-mobile mb-4 font-display text-primary md:text-display-lg">
             Simple, Transparent Pricing
           </h1>
           <p className="text-body-lg mx-auto max-w-2xl text-on-surface-variant">
-            Choose the plan that fits your needs. All plans include our 100% satisfaction guarantee.
+            Choose the plan that fits your needs. All plans include our 100% satisfaction
+            guarantee and studio-grade AI generation.
           </p>
         </section>
 
-        {/* Pricing Cards */}
         <section className="mx-auto mb-24 grid max-w-6xl grid-cols-1 gap-8 md:grid-cols-3">
           {plans.map((plan) => (
             <PricingCard
@@ -106,7 +112,6 @@ export default function PricingPage() {
           ))}
         </section>
 
-        {/* Feature Comparison */}
         <section className="mb-24">
           <h2 className="text-headline-md mb-8 text-center font-heading text-primary">
             Feature Comparison
@@ -174,7 +179,6 @@ export default function PricingPage() {
           </div>
         </section>
 
-        {/* FAQ Section */}
         <section className="mx-auto max-w-3xl">
           <h2 className="text-headline-md mb-8 text-center font-heading text-primary">
             Frequently Asked Questions
@@ -188,7 +192,33 @@ export default function PricingPage() {
             ))}
           </div>
         </section>
+
+        <section className="mt-24 rounded-[2rem] bg-primary px-[var(--spacing-margin-mobile)] py-[var(--spacing-stack-lg)] text-center md:px-[var(--spacing-margin-desktop)]">
+          <h2 className="mb-4 text-display-lg-mobile text-white md:text-display-lg">
+            Ready to create your new headshots?
+          </h2>
+          <p className="mx-auto mb-8 max-w-2xl text-body-lg text-white/80">
+            Start with the plan that matches your workflow today and upgrade whenever you need more
+            speed, volume, or collaboration features.
+          </p>
+          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Link
+              href="/upload"
+              className="rounded-xl bg-secondary-container px-8 py-4 text-label-sm font-bold text-primary shadow-lg transition-all hover:brightness-95 active:scale-95"
+            >
+              Get Started
+            </Link>
+            <Link
+              href="/gallery"
+              className="rounded-xl border border-white/30 px-8 py-4 text-label-sm text-white transition-all hover:bg-white/10 active:scale-95"
+            >
+              View Gallery
+            </Link>
+          </div>
+        </section>
       </div>
+
+      <SiteFooter variant="simple" />
     </div>
   );
 }
