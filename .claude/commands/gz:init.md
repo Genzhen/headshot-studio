@@ -8,8 +8,4 @@
 
 ## 执行要求
 - 识别 `/Users/gz/Desktop/Advance/Task/week_two/stitch_ai_headshot_studio` 作为设计稿输入。
-- **状态更新**：执行完成后，修改项目根目录的 `WORKFLOW.md`：
-  - 将 `Architect` 节点类设为 `completed`。
-  - 将其描述文字中的状态改为“基建已完成”。
-  - 将 `PM` 节点类设为 `active`。
-  - 将其描述文字中的状态改为“正在分析设计稿...”。
+- **状态更新**：执行完成后，更新 `specs/TASKS_BACKLOG.md` 的「当前执行状态」，将「当前 Cycle」设为 Cycle 1，「当前 Node」设为 `N1: 初始化`。

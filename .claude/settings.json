@@ -1,0 +1,44 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash /Users/gz/Desktop/Advance/Task/week_two/headshot-studio/.claude/workflow-visualizer/hook.sh"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash /Users/gz/Desktop/Advance/Task/week_two/headshot-studio/.claude/workflow-visualizer/hook.sh"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash /Users/gz/Desktop/Advance/Task/week_two/headshot-studio/.claude/workflow-visualizer/hook.sh"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash /Users/gz/Desktop/Advance/Task/week_two/headshot-studio/.claude/workflow-visualizer/hook.sh"
+          }
+        ]
+      }
+    ]
+  }
+}

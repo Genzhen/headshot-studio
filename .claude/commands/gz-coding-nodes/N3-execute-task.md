@@ -12,4 +12,4 @@
 - 修改 `schema.prisma` 后，必须执行 `pnpm run db:generate`。
 - 每一行代码改动后，运行 `pnpm run check-types` 确保类型安全。
 
-✓ 执行完毕后，识别当前 Cycle 编号，更新 WORKFLOW.md 中对应的 `Cycle{N}_N3` 为 completed。
+✓ 执行完毕后，更新 specs/TASKS_BACKLOG.md「当前执行状态」中的「当前 Node」为 `N4: 审查`。

@@ -1,7 +1,7 @@
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 
-import { protectedProcedure, publicProcedure, router } from "../index";
+import { protectedProcedure, router } from "../index";
 
 export const generationRouter = router({
   // List user's generations

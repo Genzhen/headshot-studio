@@ -13,17 +13,27 @@ import type { StyleType } from "@/components/upload/style-selector";
 export default function UploadPage() {
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedStyle, setSelectedStyle] = useState<StyleType>("EXECUTIVE");
-  const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
+  const [uploadedFileKeys, setUploadedFileKeys] = useState<string[]>([]);
 
-  const handleFilesSelected = (files: File[]) => {
-    setUploadedFiles((prev) => [...prev, ...files]);
+  const handleFileUploaded = (fileKey: string) => {
+    setUploadedFileKeys((prev) => [...prev, fileKey]);
   };
 
+  const canContinue = uploadedFileKeys.length >= 10;
+
   const handleContinue = () => {
+    if (!canContinue) return;
     if (currentStep < 3) {
       setCurrentStep((prev) => prev + 1);
     }
   };
+
+  const continueLabel =
+    currentStep === 1
+      ? "Continue to Style Details"
+      : currentStep === 2
+        ? "Continue to Payment"
+        : "Complete";
 
   return (
     <div className="min-h-screen bg-surface">
@@ -36,18 +46,21 @@ export default function UploadPage() {
           </div>
 
           <div className="order-1 space-y-[var(--spacing-gutter)] lg:order-2 lg:col-span-8">
-            <UploadZone onFilesSelected={handleFilesSelected} />
+            <UploadZone onFileUploaded={handleFileUploaded} />
             <StyleSelector value={selectedStyle} onChange={setSelectedStyle} />
-            <div className="flex justify-end pt-[var(--spacing-stack-sm)]">
+
+            <div className="flex items-center justify-end gap-4 pt-[var(--spacing-stack-sm)]">
+              {!canContinue && uploadedFileKeys.length > 0 && (
+                <p className="text-label-sm text-on-surface-variant">
+                  {10 - uploadedFileKeys.length} more photo{10 - uploadedFileKeys.length === 1 ? "" : "s"} needed
+                </p>
+              )}
               <button
                 onClick={handleContinue}
-                className="group inline-flex items-center gap-2 rounded-xl bg-primary px-10 py-4 text-label-sm text-white shadow-xl transition-all hover:opacity-90 active:scale-95"
+                disabled={!canContinue}
+                className="group inline-flex items-center gap-2 rounded-xl bg-primary px-10 py-4 text-label-sm text-white shadow-xl transition-all hover:opacity-90 active:scale-95 disabled:cursor-not-allowed disabled:opacity-40"
               >
-                {currentStep === 1
-                  ? "Continue to Style Details"
-                  : currentStep === 2
-                    ? "Continue to Payment"
-                    : "Complete"}
+                {continueLabel}
                 <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
               </button>
             </div>

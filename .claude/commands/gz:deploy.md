@@ -114,9 +114,8 @@ pnpm check-types
 
 部署成功后必须：
 
-1. 更新 `WORKFLOW.md`
-2. 将 `DEPLOY` 标记为完成
-3. 写入最终公网 URL
+1. 更新 `specs/TASKS_BACKLOG.md`「Cycle 历史」表，新增 `DEPLOY` 行标记为 `✅ 完成`。
+2. 写入最终公网 URL 到 `docs/PRD.md` 或项目 README。
 
 ## 强制规则
 

@@ -112,6 +112,50 @@ _记录开发过程中遇到的问题和解决方案_
 
 ---
 
+## 2026-06-18 - Cycle 8: Dashboard 完善（Tasks 8.1/8.2/8.3）
+
+**问题**: 现有 Dashboard 只是一个空壳，需要实现生成历史、照片管理、用户资料编辑。
+
+**解决方案**:
+1. 将 Dashboard 拆分为 Server Component（page.tsx auth check）+ Client Component（generation-history.tsx tRPC 查询）
+2. 照片详情页 `/dashboard/[generationId]` 使用 Next.js App Router 动态路由，params 类型为 `Promise<{generationId: string}>`（Next.js 15 breaking change）
+3. 下载功能直接用 `<a>` 标签 + `target="_blank"` 而非 API 代理，简单可靠
+4. Lightbox 用本地 useState 控制，无需第三方库
+5. 新增 `user.getProfile` + `user.updateProfile` tRPC 过程，独立 `user.ts` 路由文件
+
+**效果**:
+- Web TypeScript 零错误
+- API 7/7 tests passing
+- Task 8.4（Credits 余额）已跳过（依赖未实现的 Cycle 7）
+
+**建议**:
+- 收藏功能的 `queryClient.invalidateQueries` 需传入完整的 queryOptions 对象（不只是 key）
+- Next.js 15 App Router 的 `params` 是 Promise，必须 `await params`
+
+---
+
+## 2026-06-18 - Cycle 5: 前端 S3 直传集成
+
+**问题**: UploadZone 组件只有本地文件选择，需要集成 tRPC presigned URL → XHR 直传 → confirmUpload 完整链路。
+
+**解决方案**:
+1. 用 `XMLHttpRequest` 替代 `fetch` 实现 S3 PUT，原生支持 `xhr.upload.progress` 事件获取精确进度
+2. 使用 `filesRef.current = files` 在 `useEffect` cleanup 中 revoke 所有 blob URL，防止内存泄漏
+3. `addFiles` 在 `setFiles` 回调内计算剩余槽位，通过 `Promise.resolve().then()` 微任务延迟启动上传，避免 setState 内触发副作用
+4. 拖拽区加 `role="button"` + `tabIndex={0}` + `onKeyDown` 确保键盘可访问
+
+**效果**:
+- 多文件并发上传，每文件独立进度条 + 缩略图
+- 上传完成后 UploadedFile 写入数据库，page.tsx 追踪 fileKeys
+- 上传不足 10 张时 Continue 按钮禁用
+- Web app TypeScript 零错误
+
+**建议**:
+- 后续可加 retry 按钮替代用户手动删除失败文件重新上传
+- Task 5.1 S3 bucket + IAM 配置需在真实 AWS 账号完成后才能端到端测试
+
+---
+
 ## 模板
 
 ### [日期] - [主题]

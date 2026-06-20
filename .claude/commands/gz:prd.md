@@ -8,6 +8,4 @@
 
 ## 核心目标
 - 将 HTML 设计稿转化为可实现的 Task 列表。
-- **状态更新**：生成 specs 后，修改项目根目录的 `WORKFLOW.md`：
-  - 标记 `PM` 为 `completed`，描述改为 `📝 产品经理 (PRD)<br/>需求已就绪`。
-  - 标记 `Engineer` 为 `active`，描述改为 `🧑‍💻 工程师 (Coding)<br/>正在准备开发...`。
+- **状态更新**：生成 specs 后，更新 `specs/TASKS_BACKLOG.md` 的「当前执行状态」，将「当前 Cycle」设为第一个待执行的 Cycle。

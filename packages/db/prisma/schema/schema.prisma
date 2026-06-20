@@ -46,3 +46,19 @@ model Photo {
   @@index([generationId])
   @@map("photo")
 }
+
+model UploadedFile {
+  id         String   @id @default(cuid())
+  userId     String
+  fileKey    String   @unique
+  fileName   String
+  fileSize   Int
+  fileType   String
+  status     String   @default("PENDING") // PENDING, UPLOADED, VERIFIED, FAILED
+  uploadedAt DateTime @default(now())
+
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, status])
+  @@map("uploaded_file")
+}

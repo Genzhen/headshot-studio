@@ -21,7 +21,7 @@ flowchart TD
         N8["🚀 N8: 归档<br/>同步文档/准备部署"]
     end
 
-    DEPLOY([AWS MCP 部署])
+    DEPLOY([🚀 AWS 部署已完成])
 
     %% 流程连接
     INIT --> Architect --> PM --> N1
@@ -71,7 +71,7 @@ flowchart TD
     class Cycle4_N6 completed
     class Cycle4_N7 completed
     class Cycle4_N8 completed
-    class DEPLOY pending
+    class DEPLOY completed
 ```
 
 ## 阶段说明
@@ -89,7 +89,7 @@ flowchart TD
 | **Cycle 4** | ✅ **完成** | **F6: 定价页面 + 测试** |
 | Cycle 4 N1-N8 | ✅ 全部完成 | Pricing + 20 tests passing |
 | **Total** | ✅ | **20/23 Tasks (87%)** |
-| DEPLOY | ✅ **完成** | 已通过 AWS MCP 成功部署至 Lambda (URL: https://headshot.studio.aws-api.com) |
+| DEPLOY | ✅ **完成** | 已通过 SST + OpenNext 成功部署至 AWS Lambda (URL: https://d2jy7kzi6w8a28.cloudfront.net) |
 
 ## 设计稿输入
 
