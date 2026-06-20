@@ -38,6 +38,14 @@
             "command": "bash /Users/gz/Desktop/Advance/Task/week_two/headshot-studio/.claude/workflow-visualizer/hook.sh"
           }
         ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node /Users/gz/Desktop/Advance/Task/week_two/headshot-studio/.claude/hooks/codex-review-on-stop.cjs"
+          }
+        ]
       }
     ]
   }
