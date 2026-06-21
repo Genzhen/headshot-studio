@@ -11,14 +11,26 @@ const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp", "image/heic"];
 const MAX_SIZE_BYTES = 20 * 1024 * 1024; // 20MB
 const PRESIGN_EXPIRES_IN = 60 * 5; // 5 minutes
 
-function getS3Client() {
-  return new S3Client({
-    region: env.AWS_REGION,
-    credentials: {
-      accessKeyId: env.AWS_ACCESS_KEY_ID,
-      secretAccessKey: env.AWS_SECRET_ACCESS_KEY,
-    },
-  });
+function getS3Config() {
+  if (!env.AWS_S3_BUCKET) {
+    throw new TRPCError({
+      code: "INTERNAL_SERVER_ERROR",
+      message: "S3 storage is not configured",
+    });
+  }
+  const credentialConfig =
+    env.AWS_ACCESS_KEY_ID && env.AWS_SECRET_ACCESS_KEY
+      ? {
+          credentials: {
+            accessKeyId: env.AWS_ACCESS_KEY_ID,
+            secretAccessKey: env.AWS_SECRET_ACCESS_KEY,
+          },
+        }
+      : {};
+  return {
+    s3: new S3Client({ region: env.AWS_REGION, ...credentialConfig }),
+    bucket: env.AWS_S3_BUCKET,
+  };
 }
 
 export const uploadRouter = router({
@@ -39,9 +51,9 @@ export const uploadRouter = router({
       const ext = input.fileName.split(".").pop() ?? "jpg";
       const fileKey = `uploads/${userId}/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
 
-      const s3 = getS3Client();
+      const { s3, bucket } = getS3Config();
       const command = new PutObjectCommand({
-        Bucket: env.AWS_S3_BUCKET,
+        Bucket: bucket,
         Key: fileKey,
         ContentType: input.fileType,
         ContentLength: input.fileSize,

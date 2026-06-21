@@ -24,6 +24,7 @@
 | DEPLOY | AWS Lambda 部署 | ✅ 完成 | 2026-06-14 |
 | Cycle 5 | 文件上传系统 (Task 5.2/5.3/5.4) | ✅ 完成 | 2026-06-18 |
 | Cycle 8 | Dashboard 完善 (Task 8.1/8.2/8.3) | ✅ 完成 | 2026-06-18 |
+| DEPLOY | S3 上传集成部署 (UploadsBucket + 环境修复) | ✅ 完成 | 2026-06-20 |
 
 ---
 

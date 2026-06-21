@@ -529,7 +529,18 @@ photo.favorite({
 - 用户满意度 (NPS)
 - 照片下载率
 
-### 11.3 术语表
+### 11.3 生产环境
+
+**部署 URL**: https://d2jy7kzi6w8a28.cloudfront.net
+
+| 资源 | 值 |
+|------|-----|
+| CloudFront URL | https://d2jy7kzi6w8a28.cloudfront.net |
+| S3 Upload Bucket | headshot-studio-production-uploadsbucketbucket-baaxfeua |
+| AWS Region | us-east-1 |
+| 最后部署 | 2026-06-20 |
+
+### 11.4 术语表
 | 术语 | 定义 |
 |------|------|
 | Headshot | 专业头像照片 |

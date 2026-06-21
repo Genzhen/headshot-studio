@@ -34,8 +34,11 @@ export default $config({
     const resolvedCorsOrigin =
       corsOrigin ?? (appDomain ? `https://${appDomain}` : bootstrapUrl);
 
+    const uploadBucket = new sst.aws.Bucket("UploadsBucket");
+
     const web = new sst.aws.Nextjs("Web", {
       path: "apps/web",
+      link: [uploadBucket],
       domain: appDomain
         ? {
             name: appDomain,
@@ -47,6 +50,7 @@ export default $config({
         BETTER_AUTH_SECRET: readRequiredEnv("BETTER_AUTH_SECRET"),
         BETTER_AUTH_URL: resolvedAuthUrl,
         CORS_ORIGIN: resolvedCorsOrigin,
+        AWS_S3_BUCKET: uploadBucket.name,
         NODE_ENV: "production",
       },
       server: {
@@ -64,6 +68,7 @@ export default $config({
 
     return {
       url: web.url,
+      uploadBucketName: uploadBucket.name,
     };
   },
 });
